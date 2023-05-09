@@ -3,17 +3,18 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import authRouter from './routes/auth/auth.js';
-
+dotenv.config();
 const app= express();
-
+app.use(express.json())
 app.use(bodyParser.json({limit:'30mb',extended:true}));
 app.use(bodyParser.urlencoded({limit:'30mb',extended:true}));
-app.use('/vi/api/auth/',authRouter);
-dotenv.config();
+
+
 
 app.get('/',(req,res)=>{
     res.send("my life")
 })
+app.use('/v1/api/auth',authRouter);
 
 mongoose
   .connect(process.env.MONGO_URI, {
