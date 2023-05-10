@@ -1,7 +1,10 @@
 import express from 'express';
-import { register } from '../../controllers/auth/authcontroller.js';
+import { deleteUserById, getAllUSers, register, updateByUserId, updateByUsername } from '../../controllers/auth/authcontroller.js';
 
 const router = express.Router();
 router.post('/register', register);
-
+//router.put('/users/:username',updateByUsername);
+router.put('/users/:_id', updateByUserId);
+router.get('/', getAllUSers);
+router.delete('/users/:_id', deleteUserById);
 export default router;
