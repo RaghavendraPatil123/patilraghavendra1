@@ -1,5 +1,6 @@
 import User from '../../models/users/User.js';
 import bcrypt from 'bcrypt';
+import { response } from 'express';
 import jwt from 'jsonwebtoken';
 
 export const register = async (req, res) => {
@@ -102,5 +103,26 @@ export const deleteUserById = async (req,res) => {
        return res.status(401).json({message:"The user does not exist"})
 
     res.status(200).json({message:"the user deleted successfully"})
+
+}
+
+export const login = async (req,res)=>{
+    const {email,password}=req.body;
+    if(!email||!password)
+    return res.status(400).json({message:"email and password both are required"});
+
+    const founduser = await User.findone({email});
+    if (!founduser)
+    return res.send (400).json ({message:"user does not exist"});
+    const passwordMatch = await bcrypt.compare(password,founduser.password);
+    if (!passwordMatch)
+    return res.send(403).json({message:'unauthorized'});
+
+    responseData={
+        username: founduser.username,
+        role: founduser.role
+    }
+     res.status(201).json({message:"user sucessfully logged in", 
+     data : responseData});
 
 }
