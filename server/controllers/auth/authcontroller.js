@@ -111,14 +111,14 @@ export const login = async (req,res)=>{
     if(!email||!password)
     return res.status(400).json({message:"email and password both are required"});
 
-    const founduser = await User.findone({email});
+    const founduser = await User.findOne({email});
     if (!founduser)
     return res.send (400).json ({message:"user does not exist"});
     const passwordMatch = await bcrypt.compare(password,founduser.password);
     if (!passwordMatch)
     return res.send(403).json({message:'unauthorized'});
 
-    responseData={
+     const responseData={
         username: founduser.username,
         role: founduser.role
     }

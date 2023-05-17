@@ -23,4 +23,10 @@ mongoose
     })
     .catch((error) => console.log(`${error} did not connect`));
 
+
+
+
+
+
+    
 app.listen(7500, () => console.log("my server is running onport 7500"))
