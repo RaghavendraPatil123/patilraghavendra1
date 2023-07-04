@@ -5,6 +5,10 @@ import Blog from './Pages/Blog';
 import Contact from './Pages/Contact';
 import Events from './Pages/Events';
 import Home from './Pages/Home';
+import Footer from './Components/Footer';
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
+import LandingPage from './Pages/LandingPage';
 
 
 function App() {
@@ -19,8 +23,12 @@ function App() {
         <Route path="/Events" element={<Events/>}/>
         <Route path="/Blog" element={<Blog/>}/>
         <Route path="/Contact" element={<Contact/>}/>
+        <Route path='/Login' element={<Login/>}/>
+        <Route path='/Signup' element={<Signup/>}/>
+        <Route path='/' element={<LandingPage/>}/>
       </Routes>
       </BrowserRouter>
+      <Footer/>
 
 </>
   );

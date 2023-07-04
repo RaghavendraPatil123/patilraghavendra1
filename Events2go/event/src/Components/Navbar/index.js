@@ -11,17 +11,18 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
-
+import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 
 const pages = ['Home', 'About', 'Events', 'Blog', 'Contact'];
-const settings = ['Login', 'Signup'];
+const settings = [];
+
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -38,15 +39,28 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  const onLogin = (e) => {
+    e.preventDefault();
+    navigate('/login')
+  
+  };
+  const onSignup = (e) => {
+    e.preventDefault();
+    navigate('/Signup')
+
+  }
+
+
+
   return (
-    <AppBar position="static" sx={{backgroundColor:"blue"}}>
+    <AppBar position="fixed" sx={{backgroundColor:"white"}}>
         
       <Container maxWidth="xl">
         <Toolbar disableGutters>
             
         <Box sx={{marginRight:"25x"}}>
             <NavLink to="/">
-          <img src="http://buzzitsolutions.com/events/assets/front/images/logo-white.png" alt="logo" height="85" width="105"/>
+          <img src="https://events2go.com.au/assets/front/images/logo-white.png" alt="logo" height="85" width="105"/>
           </NavLink>
           </Box>
           <Box sx={{ flexGrow: 0.8 }} />
@@ -119,34 +133,12 @@ function Navbar() {
               </NavLink>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-                <AccountCircleTwoToneIcon onClick={handleOpenUserMenu} sx={{ p: 0, color:"black", height:"30px", width:"30px" }}/>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          <Button variant="contained" onClick={onLogin}  color="success" sx={{backgroundColor:"pink", marginRight:'10px'}} >
+          LOGIN
+        </Button> 
+        <Button variant="contained" onClick={onSignup} color="success" sx={{backgroundColor:"magenta"}} >
+          SIGNUP
+        </Button>
         </Toolbar>
       </Container>
     </AppBar>

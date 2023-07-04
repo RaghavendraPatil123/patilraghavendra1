@@ -21,7 +21,7 @@ export default function Card() {
 
 const itemData = [
   {
-    img: 'http://buzzitsolutions.com/events/assets/front/images/image-02.png',
+    img: 'https://events2go.com.au/assets/front/images/image-02.png',
 
   },
 ]

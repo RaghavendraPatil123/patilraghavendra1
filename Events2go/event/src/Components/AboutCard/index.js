@@ -9,11 +9,11 @@ export default function AboutCard (props) {
     const title=props.title;
     const description=props.description;
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} >
       <CardActionArea>
 
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" color='#002884' sx={{fontFamily: "raleway"}} fontSize='1.5rem'>
             {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">

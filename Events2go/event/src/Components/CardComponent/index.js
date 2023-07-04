@@ -21,18 +21,17 @@ export default function CardComponent(props) {
         <Card sx={{ maxWidth: 345 }}>
             <CardMedia
                 component="img"
-                alt="green iguana"
+                alt=""
                 height="200"
-                image= "http://buzzitsolutions.com/events/uploads/upcomingevents/_upcoming_1684472297.png"
+                image= {props.image}
             />
             <CardContent>
-                <Typography variant="h6" component="div">
+                <Typography variant="h6" component="div" color='#002884'>
                     {heading}
                     {/* Hyderabad's Biggest Weekend Theme Party */}
                 </Typography>
                 { <Typography variant="subtitle2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          
         </Typography> }
             </CardContent>
             <CardActions>
